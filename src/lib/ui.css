@@ -1,0 +1,94 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 100%;
+}
+
+.task {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.taskThumbnail, .task img {
+    width: 168px !important;
+    height: 94px !important;   
+}
+
+.taskInfos {
+    width: calc(100% - 168px);
+}
+
+.cancel-button-container {
+    width: 94px;
+    height: 94px;
+}
+.cancel-button {
+    width: 48px;
+    height: 48px;
+    color: var(--pico-color-red-500);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cancel-button:hover {
+    cursor: pointer;
+    color: red;
+}
+
+main button {
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
+
+:root:not([data-theme="dark"]), [data-theme="light"] {
+    --progress-brightnesss: brightness(1);
+}
+:root:not([data-theme="light"]), [data-theme="dark"] {
+    --progress-brightnesss: brightness(1.5);
+}
+
+.progress-container {
+    width: 100%;
+    height: .5rem;
+    background-color: var(--pico-progress-background-color);
+    filter: var(--progress-brightnesss);
+    /* background-color: #3e3e3e; */
+    border-radius: var(--pico-border-radius);
+    margin: 10px;
+}
+
+.progress {
+    width: 50%;
+    height: 100%;
+    /*
+        Audio: rgb(120, 0, 202)
+        Video: rgb(0, 125, 8)
+        Fusion: var(--pico-progress-color)
+    */
+    background-color: var(--pico-progress-color);
+    border-radius: var(--pico-border-radius);
+}
+
+.audio {
+    background-color: rgb(120, 0, 202) !important;
+}
+
+.video {
+    background-color: rgb(0, 125, 8) !important;
+}
+
+.progress-container[data-tooltip] {
+    border: 0 !important;
+}
