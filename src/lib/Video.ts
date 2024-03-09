@@ -1,13 +1,12 @@
 import ytdl from "ytdl-core";
 import path from "path"
-import { dev } from "$app/environment";
 import fs from "fs/promises";
 import { homedir } from "os"
 import child_process, { ChildProcess } from "child_process";
 import type { Readable } from "stream";
 import { tasksWritable } from "./server/stores";
 
-const { default: ffmpegPath } = dev ? await import("ffmpeg-static") : "ffmpeg" // FFMPEG ANDROID PATH
+const ffmpegPath = "ffmpeg" // FFMPEG ANDROID PATH
 
 const OUT_DIR = (await fs.readFile(path.join(process.cwd(), "outPath.txt"), { encoding: "utf-8" })).replace("~", homedir())
 
@@ -19,10 +18,6 @@ async function file_exists(path: string) {
         return false
     }
 }
-
-// function handleError(e: unknown) {
-//     console.error("ERREUR:", e)
-// }
 
 export default class Video {
     link: string
